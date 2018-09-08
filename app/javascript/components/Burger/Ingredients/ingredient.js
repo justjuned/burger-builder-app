@@ -1,3 +1,8 @@
+/*######################################################################################################
+	### NOTE: Simply Define As An Stateful Component Cause We Need To Set Prop Types through PropTypes.###
+	######################################################################################################
+*/
+
 import React from 'react'
 import PropTypes from 'prop-types'
 
