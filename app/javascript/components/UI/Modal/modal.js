@@ -3,18 +3,27 @@ import Backdrop from '../Backdrop/backdrop'
 
 import classes from './modal.sass'
 
-const modal = ( props ) => (
-	<React.Fragment>
-		<Backdrop pop={props.pop} closeModal={props.closeModal} />
-		<div
-			className={classes.modal}
-			style={{
-				transform: props.pop ? 'translateY(0)' : 'translateY(-100vh)',
-				opacity: props.pop ? '1' : '0'
-			}}>
-			{props.children}
-		</div>
-	</React.Fragment>
-)
+class Modal extends React.Component {
 
-export default modal
+	shouldComponentUpdate (nextProps, nextState) {
+		return nextProps.pop !== this.props.pop
+	}
+
+	render() {
+		return (
+			<React.Fragment>
+				<Backdrop pop={this.props.pop} closeModal={this.props.closeModal} />
+				<div
+					className={classes.modal}
+					style={{
+						transform: this.props.pop ? 'translateY(0)' : 'translateY(-100vh)',
+						opacity: this.props.pop ? '1' : '0'
+					}}>
+					{this.props.children}
+				</div>
+			</React.Fragment>
+		)
+	}
+}
+
+export default Modal
